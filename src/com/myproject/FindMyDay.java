@@ -18,6 +18,7 @@ public class FindMyDay extends YearClass implements DayCheck{
     String month;
     int date;
 
+    // Ensures that the user inputs correct date
     @Override
     public boolean CheckValidDay(int date) {
         if (date > 0 && date <= 31) {
@@ -28,12 +29,12 @@ public class FindMyDay extends YearClass implements DayCheck{
         return checkDay;
     }
 
-
+    // Ensures that the user inputs valid month
     @Override
     public boolean checkValidMonth(String month) {
 
-        for (int i=0; i < months.length; i++ ) {
-            if (month.equals(months[i]) == true) {
+        for (String s : months) {
+            if (month.equals(s)) {
                 checkMonth = true;
                 break;
             }
@@ -42,6 +43,7 @@ public class FindMyDay extends YearClass implements DayCheck{
         return checkMonth;
     }
 
+    // Ensures that the user inputs valid year
     @Override
     public boolean checkValidYear(int year) {
         if (year >= 1700 && year < 2400){
@@ -52,7 +54,7 @@ public class FindMyDay extends YearClass implements DayCheck{
 
     public void findDay () {
         Scanner scan = new Scanner(System.in);
-
+        // Gets inputs from user
         System.out.println("Enter the year from 1700 to 2399: ");
         year = scan.nextInt();
 
@@ -62,6 +64,7 @@ public class FindMyDay extends YearClass implements DayCheck{
         System.out.println("Enter the day Ex: 01 or 21");
         date = scan.nextInt();
 
+        // Calling methods from parent class
         codeYear = yearCode(year);
         codeMonth = monthCode(month);
         codeLeap = leapYearCode(year);
